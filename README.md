@@ -16,4 +16,4 @@ GET: `http://localhost:8000/all`
 
     localhost:8081
    
-   Database: scholarship
+   Collection: scholarship
