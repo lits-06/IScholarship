@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from bson import ObjectId
 
 from ..db.mongo import connect_to_mongo
 from ..models.user import User
@@ -21,14 +22,18 @@ async def login_with_google(data: dict):
     existing_user = user_collection.find_one({"gmail": gmail})
 
     if existing_user:
-        return User(**existing_user)
+        # Chuyển đổi ObjectId thành chuỗi
+        existing_user["_id"] = str(existing_user["_id"])
+        return existing_user
     else:
         new_user = {
             "gmail": gmail,
             "username": data["username"],
             "password": 123
         }
-        user_collection.insert_one(new_user)
+        # Thêm mới người dùng và chuyển đổi ObjectId thành chuỗi
+        result = user_collection.insert_one(new_user)
+        new_user["_id"] = str(result.inserted_id)
         return new_user
 
     
