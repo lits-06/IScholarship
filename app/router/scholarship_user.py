@@ -9,7 +9,7 @@ scholarshipuser_collection = db["scholarshipuser"]
 scholarship_collection = db["scholarship"]
 
 
-@router.post("/user_save_scholarship", tags = ["scholarshipuser"])
+@router.post("/user_save_scholarship")
 async def user_save_scholarship(user_id: str, scholarship_id: str, data: Annotated[dict, Body(...)]):
     user_scholarship = {
         "user_id": user_id,
@@ -23,7 +23,7 @@ async def user_save_scholarship(user_id: str, scholarship_id: str, data: Annotat
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi lưu")
     
 
-@router.post("/user_discard_scholarship", tags = ["scholarshipuser"])
+@router.post("/user_discard_scholarship")
 async def user_discard_scholarship(user_id: str, scholarship_id: str, data: Annotated[dict, Body(...)]):
     result = scholarshipuser_collection.update_one(
         {"user_id": user_id, 
@@ -45,7 +45,7 @@ async def user_discard_scholarship(user_id: str, scholarship_id: str, data: Anno
             raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi lưu")
         
 
-@router.put("/user_update_saved_scholarship", tags = ["scholarshipuser"])
+@router.put("/user_update_saved_scholarship")
 async def user_update_saved_scholarship(user_id: str, scholarship_id: str, data: Annotated[dict, Body(...)]):
     result = scholarshipuser_collection.update_one(
         {"user_id": user_id, 
@@ -58,7 +58,7 @@ async def user_update_saved_scholarship(user_id: str, scholarship_id: str, data:
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Không thể cập nhật dữ liệu")
         
 
-@router.delete("/user_delete_scholarship", tags = ["scholarshipuser"])
+@router.delete("/user_delete_scholarship")
 async def user_delete_scholarship(user_id: str, scholarship_id: str):
     result = scholarshipuser_collection.delete_one({"user_id": user_id, "scholarship_id": scholarship_id})
     if result.deleted_count > 0:
@@ -67,15 +67,17 @@ async def user_delete_scholarship(user_id: str, scholarship_id: str):
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Không tìm thấy dữ liệu để xóa")
     
 
-@router.get("/get_all_shortlist", tags = ["scholarshipuser"])
+@router.get("/get_all_shortlist")
 async def get_all_shortlist(user_id: str):
     projection = {"scholarship_id": True}
-    cursor = scholarshipuser_collection.find({"user_id": user_id}, projection)
+    cursor = scholarshipuser_collection.find({"user_id": user_id, "label": 1}, projection)
     scholarship_list = list(cursor)
     if scholarship_list:
         data = []
-        for scholarship_id in scholarship_list:
-            result = scholarship_collection.find_one({"_id": ObjectId(scholarship_id)})
+        for scholarship in scholarship_list:
+            id = scholarship["scholarship_id"]
+            result = scholarship_collection.find_one({"_id": ObjectId(id)})
+            result["_id"] = str(result["_id"])
             data.append(result)
         return {"data": data}
     else:

@@ -1,6 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Body
 from passlib.context import CryptContext
+from bson import ObjectId
 
 from ..db.mongo import db
 
@@ -9,7 +10,7 @@ user_collection = db["user"]
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-@router.get("/login-google", tags = ["user"])
+@router.get("/login-google")
 async def login_with_google(data: dict):
     email = data["email"]
     existing_user = user_collection.find_one({"email": email})
@@ -34,7 +35,7 @@ async def login_with_google(data: dict):
         return {"user": user_data}
 
 
-@router.get("/login", tags = ["user"])
+@router.get("/login")
 async def login(data: dict):
     email = data["email"]
     existing_user = user_collection.find_one({"email": email})
@@ -50,7 +51,7 @@ async def login(data: dict):
     return {"user": user_data}
 
 
-@router.post("/register", tags = ["user"])
+@router.post("/register")
 async def register(data: dict):
     email = data["email"]
     existing_user = user_collection.find_one({"email": email})
@@ -72,10 +73,10 @@ async def register(data: dict):
     return {"user": user_data}
 
 
-@router.put("/update_user_info", tags = ["user"])
+@router.put("/update_user_info")
 async def update_user_info(user_id: str, data: Annotated[dict, Body(...)]):
     result = user_collection.update_one(
-        {"user_id": user_id},
+        {"_id": ObjectId(user_id)},
         {"$set": {**data}}
     )
     if result.modified_count > 0: 
