@@ -10,7 +10,7 @@ user_collection = db["user"]
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-@router.get("/login-google")
+@router.post("/login-google")
 async def login_with_google(data: dict):
     email = data["email"]
     existing_user = user_collection.find_one({"email": email})
@@ -35,7 +35,7 @@ async def login_with_google(data: dict):
         return {"user": user_data}
 
 
-@router.get("/login")
+@router.post("/login")
 async def login(data: dict):
     email = data["email"]
     existing_user = user_collection.find_one({"email": email})
