@@ -40,7 +40,7 @@ async def get_scholarship(page: int):
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi tìm học bổng")
     
 
-@router.get("/get_scholarship_info")
+@router.get("/get_scholarship_info/{scholarship_id}")
 async def get_scholarship_info(scholarship_id: str):
     result = scholarship_collection.find_one({"_id": ObjectId(scholarship_id)})
     if result:

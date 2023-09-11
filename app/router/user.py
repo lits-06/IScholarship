@@ -44,7 +44,9 @@ async def login(data: dict):
     password = existing_user["password"]
     if not pwd_context.verify(data["password"], password):
         raise HTTPException(status_code = 401, detail = "Không xác thực")
+    print(existing_user)
     user_data = {
+        "id": str(existing_user["_id"]),
         "email": existing_user["email"],
         "user_name": existing_user["user_name"]
     }
