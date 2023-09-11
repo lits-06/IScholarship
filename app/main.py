@@ -7,7 +7,7 @@ db = connect_to_mongo()
 
 app = FastAPI()
 
-app.include_router(login.router, prefix="/api")
+app.include_router(user.router, prefix="/api")
 
 @app.get("/")
 def read_root():
