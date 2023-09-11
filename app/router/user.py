@@ -1,6 +1,5 @@
 from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Body
-from bson import ObjectId
 from passlib.context import CryptContext
 
 from ..db.mongo import db
