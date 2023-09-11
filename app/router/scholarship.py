@@ -41,7 +41,7 @@ async def get_scholarship(page: int):
 
 @router.get("/get_all_type")
 async def get_all_type():
-    type = scholarship_collection.distinct("Type")
+    type = scholarship_collection.distinct("type")
     if type:
         return {"data": type}
     else:
@@ -50,7 +50,7 @@ async def get_all_type():
 
 @router.get("/get_all_educationlevel")
 async def get_all_educationlevel():
-    level = scholarship_collection.distinct("EducationLevel")
+    level = scholarship_collection.distinct("education_level")
     if level:
         return {"data": level}
     else:
