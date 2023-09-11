@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from math import ceil
+from bson import ObjectId
 
 from ..db.mongo import db
 
@@ -38,6 +39,16 @@ async def get_scholarship(page: int):
     else:
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi tìm học bổng")
     
+
+@router.get("/get_scholarship_info")
+async def get_scholarship_info(scholarship_id: str):
+    result = scholarship_collection.find_one({"_id": ObjectId(scholarship_id)})
+    if result:
+        result["_id"] = str(result["_id"])
+        return result
+    else:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Không tìm thấy học bổng")
+
 
 @router.get("/get_all_type")
 async def get_all_type():
