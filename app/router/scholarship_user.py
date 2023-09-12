@@ -10,7 +10,7 @@ scholarship_collection = db["scholarship"]
 
 
 @router.post("/user_save_scholarship")
-async def user_save_scholarship(user_id: str, scholarship_id: str, data: Annotated[dict, Body(...)]):
+async def user_save_scholarship(user_id: str, scholarship_id: str, data: dict = Body(...)):
     user_scholarship = {
         "user_id": user_id,
         "scholarship_id": scholarship_id,
@@ -24,7 +24,7 @@ async def user_save_scholarship(user_id: str, scholarship_id: str, data: Annotat
     
 
 @router.post("/user_discard_scholarship")
-async def user_discard_scholarship(user_id: str, scholarship_id: str, data: Annotated[dict, Body(...)]):
+async def user_discard_scholarship(user_id: str, scholarship_id: str, data: dict = Body(...)):
     result = scholarshipuser_collection.update_one(
         {"user_id": user_id, 
         "scholarship_id": scholarship_id},
@@ -46,7 +46,7 @@ async def user_discard_scholarship(user_id: str, scholarship_id: str, data: Anno
         
 
 @router.put("/user_update_saved_scholarship")
-async def user_update_saved_scholarship(user_id: str, scholarship_id: str, data: Annotated[dict, Body(...)]):
+async def user_update_saved_scholarship(user_id: str, scholarship_id: str, data: dict = Body(...)):
     result = scholarshipuser_collection.update_one(
         {"user_id": user_id, 
         "scholarship_id": scholarship_id},
@@ -67,7 +67,7 @@ async def user_delete_scholarship(user_id: str, scholarship_id: str):
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Không tìm thấy dữ liệu để xóa")
     
 
-@router.get("/get_all_shortlist/{user_id}")
+@router.get("/get_all_shortlist")
 async def get_all_shortlist(user_id: str):
     projection = {"scholarship_id": True}
     cursor = scholarshipuser_collection.find({"user_id": user_id, "label": 1}, projection)
