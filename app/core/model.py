@@ -8,6 +8,13 @@ from fastapi.security.utils import get_authorization_scheme_param
 
 from app.core.config import settings
 
+from pydantic import BaseModel
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
 
 class OAuth2PasswordBearerWithCookie(OAuth2):
     """

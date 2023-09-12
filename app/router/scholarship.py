@@ -48,7 +48,16 @@ async def get_scholarship_info(scholarship_id: str):
         return result
     else:
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Không tìm thấy học bổng")
+    
 
+@router.get("/get_all_scholarship")
+async def get_all_scholarship():
+    cursor = scholarship_collection.find()
+    scholarship = [scholarship_doc | {"_id": str(scholarship_doc["_id"])} for scholarship_doc in cursor]
+    if scholarship:
+        return {"scholarship": scholarship}
+    else:
+        raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi tìm học bổng")
 
 @router.get("/get_all_type")
 async def get_all_type():
