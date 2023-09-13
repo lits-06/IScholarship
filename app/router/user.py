@@ -35,7 +35,7 @@ async def login(data: dict):
 async def login_with_google(data: dict):
     email = data["email"]
     user = user_collection.find_one({"email": email})
-    if existing_user:
+    if user:
         access_token = create_access_token(data={"user_id": str(user["_id"])})
         return {settings.COOKIE_NAME: access_token, "user_id": str(user["_id"])}
     else:
