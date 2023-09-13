@@ -1,4 +1,3 @@
-from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Body, Request
 from bson import ObjectId
 

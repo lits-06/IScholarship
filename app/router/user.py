@@ -1,22 +1,13 @@
-from typing import Annotated
-from fastapi import APIRouter, HTTPException, status, Body, Response, Depends, Request
+from fastapi import APIRouter, HTTPException, status, Request
 from bson import ObjectId
 
 from ..db.mongo import db
-from app.core.security import get_password_hash, create_access_token, authenticate_user, verify_password
+from app.core.security import get_password_hash, create_access_token, verify_password
 from app.core.config import settings
-from app.core.form import LoginForm, LoginGoogleForm
 from app.router.deps import get_user_id
-from app.core.model import Token
 
 router = APIRouter()
 user_collection = db["user"]
-
-
-# @router.post("/token", response_model = Token)
-# def get_access_token(user_id: str):
-#     access_token = create_access_token(data={"user_id": user_id})
-#     return {settings.COOKIE_NAME: access_token, "token_type": "bearer"}
 
 
 @router.post("/login")
@@ -88,7 +79,8 @@ async def get_user_info(request: Request):
         user_collection.update_one({"email": result["email"]}, {"$set": {"date_of_birth": None}})
     if "phone" not in result:
         user_collection.update_one({"email": result["email"]}, {"$set": {"phone": None}})
-    return result
+    data = user_collection.find_one({"_id": ObjectId(user_id)}, projection)
+    return data
 
 
 @router.put("/update_user_info")
@@ -103,10 +95,5 @@ async def update_user_info(request: Request, data: dict):
         return "Cập nhật thành công"
     else:
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi cập nhật thông tin")
-    
 
-# @router.post("/logout")
-# async def logout(request: Request):
-#     token = request.headers.get('authorization')
-        
     
