@@ -1,24 +1,31 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Request
 from math import ceil
 from bson import ObjectId
+
 
 from ..db.mongo import db
 
 router = APIRouter()
 scholarship_collection = db["scholarship"]
 
-
+# admin
 @router.post("/create_scholarship")
-async def create_scholarship(data: dict):
+async def create_scholarship(request: Request, data: dict):
+    token = request.headers.get('authorization')
+    if not token:
+        raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail = "Could not validate credentials.")
     result = scholarship_collection.insert_one(data)
     if result.inserted_id:
         return "Thêm học bổng thành công"
     else:
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi thêm học bổng")
 
-
+# admin
 @router.post("/create_scholarship_list")
-async def create_scholarship_list(data: list[dict]):
+async def create_scholarship_list(request: Request, data: list[dict]):
+    token = request.headers.get('authorization')
+    if not token:
+        raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail = "Could not validate credentials.")
     for scholarship in data:
         result = scholarship_collection.insert_one(scholarship)
         if not result.inserted_id:

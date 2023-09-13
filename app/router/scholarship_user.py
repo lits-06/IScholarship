@@ -2,6 +2,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Body
 from bson import ObjectId
 
+from app.router.deps import get_user_id
 from ..db.mongo import db
 
 router = APIRouter()
@@ -10,7 +11,9 @@ scholarship_collection = db["scholarship"]
 
 
 @router.post("/user_save_scholarship")
-async def user_save_scholarship(user_id: str, scholarship_id: str, data: dict = Body(...)):
+async def user_save_scholarship(request: Request, scholarship_id: str, data: dict = Body(...)):
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
     user_scholarship = {
         "user_id": user_id,
         "scholarship_id": scholarship_id,
@@ -24,7 +27,9 @@ async def user_save_scholarship(user_id: str, scholarship_id: str, data: dict = 
     
 
 @router.post("/user_discard_scholarship")
-async def user_discard_scholarship(user_id: str, scholarship_id: str, data: dict = Body(...)):
+async def user_discard_scholarship(request: Request, scholarship_id: str, data: dict = Body(...)):
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
     result = scholarshipuser_collection.update_one(
         {"user_id": user_id, 
         "scholarship_id": scholarship_id},
@@ -46,7 +51,9 @@ async def user_discard_scholarship(user_id: str, scholarship_id: str, data: dict
         
 
 @router.put("/user_update_saved_scholarship")
-async def user_update_saved_scholarship(user_id: str, scholarship_id: str, data: dict = Body(...)):
+async def user_update_saved_scholarship(request: Request, scholarship_id: str, data: dict = Body(...)):
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
     result = scholarshipuser_collection.update_one(
         {"user_id": user_id, 
         "scholarship_id": scholarship_id},
@@ -59,7 +66,9 @@ async def user_update_saved_scholarship(user_id: str, scholarship_id: str, data:
         
 
 @router.delete("/user_delete_scholarship")
-async def user_delete_scholarship(user_id: str, scholarship_id: str):
+async def user_delete_scholarship(request: Request, scholarship_id: str):
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
     result = scholarshipuser_collection.delete_one({"user_id": user_id, "scholarship_id": scholarship_id})
     if result.deleted_count > 0:
         return "Xóa thành công"
@@ -68,7 +77,9 @@ async def user_delete_scholarship(user_id: str, scholarship_id: str):
     
 
 @router.get("/get_all_shortlist")
-async def get_all_shortlist(user_id: str):
+async def get_all_shortlist(request: Request):
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
     projection = {"scholarship_id": True}
     cursor = scholarshipuser_collection.find({"user_id": user_id, "label": 1}, projection)
     scholarship_list = list(cursor)
