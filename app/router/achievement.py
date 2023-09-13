@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, status, Body, Request
 from bson import ObjectId
 
-from app.router.deps import get_user_id
-from ..db.mongo import db
+from router.deps import get_user_id
+from db.mongo import db
 
 router = APIRouter()
 achievement_collection = db["achievement"]

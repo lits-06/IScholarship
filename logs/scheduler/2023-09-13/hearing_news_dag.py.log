@@ -1,0 +1,89 @@
+[2023-09-13T19:42:25.994+0000] {processor.py:157} INFO - Started process (PID=119) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:42:25.995+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:42:25.997+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:25.997+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:42:26.010+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:42:26.093+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.093+0000] {manager.py:499} INFO - Created Permission View: %s
+[2023-09-13T19:42:26.101+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.101+0000] {manager.py:499} INFO - Created Permission View: %s
+[2023-09-13T19:42:26.105+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.105+0000] {manager.py:499} INFO - Created Permission View: %s
+[2023-09-13T19:42:26.106+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.106+0000] {security.py:708} INFO - Not syncing DAG-level permissions for DAG 'DAG:hearing_news' as access control is unset.
+[2023-09-13T19:42:26.106+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.106+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:42:26.116+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.116+0000] {dag.py:2937} INFO - Creating ORM DAG for hearing_news
+[2023-09-13T19:42:26.124+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:26.124+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:42:26.138+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.147 seconds
+[2023-09-13T19:42:56.304+0000] {processor.py:157} INFO - Started process (PID=128) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:42:56.305+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:42:56.308+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:56.308+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:42:56.320+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:42:56.339+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:56.339+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:42:56.356+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:42:56.355+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:42:56.367+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.067 seconds
+[2023-09-13T19:43:26.649+0000] {processor.py:157} INFO - Started process (PID=137) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:43:26.651+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:43:26.655+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:43:26.655+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:43:26.666+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:43:26.685+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:43:26.685+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:43:26.702+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:43:26.702+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:43:26.714+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.070 seconds
+[2023-09-13T19:43:57.013+0000] {processor.py:157} INFO - Started process (PID=146) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:43:57.016+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:43:57.020+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:43:57.020+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:43:57.032+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:43:57.051+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:43:57.051+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:43:57.068+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:43:57.068+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:43:57.080+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.072 seconds
+[2023-09-13T19:44:27.364+0000] {processor.py:157} INFO - Started process (PID=155) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:44:27.366+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:44:27.369+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:44:27.368+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:44:27.381+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:44:27.403+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:44:27.403+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:44:27.421+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:44:27.421+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:44:27.433+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.074 seconds
+[2023-09-13T19:44:57.764+0000] {processor.py:157} INFO - Started process (PID=164) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:44:57.766+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:44:57.770+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:44:57.769+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:44:57.782+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:44:57.805+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:44:57.805+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:44:57.825+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:44:57.824+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:44:57.837+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.078 seconds
+[2023-09-13T19:45:28.150+0000] {processor.py:157} INFO - Started process (PID=173) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:45:28.151+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:45:28.154+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:45:28.154+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:45:28.166+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:45:28.188+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:45:28.188+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:45:28.207+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:45:28.207+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:45:28.220+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.075 seconds
+[2023-09-13T19:45:58.566+0000] {processor.py:157} INFO - Started process (PID=182) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:45:58.569+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:45:58.573+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:45:58.573+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:45:58.597+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:45:58.630+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:45:58.630+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:45:58.659+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:45:58.659+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:45:58.682+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.131 seconds
+[2023-09-13T19:46:37.130+0000] {processor.py:157} INFO - Started process (PID=184) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:46:37.132+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T19:46:37.135+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:46:37.135+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:46:37.148+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T19:46:37.168+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:46:37.168+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T19:46:37.186+0000] {logging_mixin.py:151} INFO - [2023-09-13T19:46:37.186+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T19:46:37.200+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.077 seconds
+[2023-09-13T20:51:47.683+0000] {processor.py:157} INFO - Started process (PID=193) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T20:51:47.686+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T20:51:47.702+0000] {logging_mixin.py:151} INFO - [2023-09-13T20:51:47.701+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T20:51:47.774+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T20:51:47.855+0000] {logging_mixin.py:151} INFO - [2023-09-13T20:51:47.855+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T20:51:47.915+0000] {logging_mixin.py:151} INFO - [2023-09-13T20:51:47.915+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T20:51:47.948+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.291 seconds
+[2023-09-13T22:15:21.004+0000] {processor.py:157} INFO - Started process (PID=202) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T22:15:21.009+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T22:15:21.018+0000] {logging_mixin.py:151} INFO - [2023-09-13T22:15:21.017+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T22:15:21.047+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T22:15:21.101+0000] {logging_mixin.py:151} INFO - [2023-09-13T22:15:21.101+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T22:15:21.137+0000] {logging_mixin.py:151} INFO - [2023-09-13T22:15:21.137+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T22:15:21.168+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.174 seconds
+[2023-09-13T23:21:26.629+0000] {processor.py:157} INFO - Started process (PID=211) to work on /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T23:21:26.630+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/hearing_news_dag.py for tasks to queue
+[2023-09-13T23:21:26.632+0000] {logging_mixin.py:151} INFO - [2023-09-13T23:21:26.632+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T23:21:26.643+0000] {processor.py:839} INFO - DAG(s) dict_keys(['hearing_news']) retrieved from /opt/airflow/dags/hearing_news_dag.py
+[2023-09-13T23:21:26.663+0000] {logging_mixin.py:151} INFO - [2023-09-13T23:21:26.663+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-09-13T23:21:26.681+0000] {logging_mixin.py:151} INFO - [2023-09-13T23:21:26.681+0000] {dag.py:3696} INFO - Setting next_dagrun for hearing_news to 2023-09-12T00:00:00+00:00, run_after=2023-09-13T00:00:00+00:00
+[2023-09-13T23:21:26.694+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/hearing_news_dag.py took 0.069 seconds

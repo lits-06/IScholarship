@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, status
 from math import ceil
 from bson import ObjectId
 
-from ..db.mongo import db
+from db.mongo import db
 
 
 router = APIRouter()

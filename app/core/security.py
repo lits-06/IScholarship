@@ -2,8 +2,8 @@ from datetime import datetime, timedelta
 from jose import jwt
 from passlib.context import CryptContext
 
-from app.core.config import settings
-from app.db.mongo import db
+from core.config import settings
+from db.mongo import db
 
 
 user_collection = db["user"]
