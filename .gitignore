@@ -1,0 +1,10 @@
+.DS_Store
+#python
+__pycache__/
+*/__pycache__
+*.egg-info
+build
+.vscode
+
+# project
+experiments/

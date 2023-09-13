@@ -1,31 +1,14 @@
 version: '3'
 
 services:
-  # mongodb:
-  #   image: mongo
-  #   container_name: db
-  #   ports:
-  #     - "27017:27017"
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: team1
-  #     MONGO_INITDB_ROOT_PASSWORD: 123
-  #   volumes:
-  #     - db:/data/db
-
   fastapi:
     build: .
+    env_file:
+      - .env
     container_name: fastapi-app
     ports:
       - "8000:8000"
-      # depends_on:
-      #   - mongodb
+    restart: always
 
-      # express:
-      #   image: mongo-express
-      #   container_name: mongo-express
-      #   ports:
-      #     - "8081:8081"
-      #   environment:
-      #     ME_CONFIG_MONGODB_URL: mongodb+srv://admin:admin123@cluster0.ymqhm3k.mongodb.net/?retryWrites=true&w=majority
-      # volumes:
-      #   db:
+volumes:
+  db:
