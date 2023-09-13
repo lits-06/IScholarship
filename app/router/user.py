@@ -72,6 +72,15 @@ async def register(data: dict):
     return {"user": user_data}
 
 
+@router.get("/get_user_info")
+async def get_user_info(request: Request):
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
+    projection = {"_id": False, "password": False}
+    result = user_collection.find_one({"_id": ObjectId(user_id)}, projection)
+    return result
+
+
 @router.put("/update_user_info")
 async def update_user_info(request: Request, data: dict):
     token = request.headers.get('authorization')
