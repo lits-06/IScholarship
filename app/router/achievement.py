@@ -13,8 +13,8 @@ achievement_collection = db["achievement"]
 async def create_achievement(request: Request, achievement: dict = Body(...)):
     token = request.headers.get('authorization')
     user_id = get_user_id(token)
-    achievement_collection.insert_one({"user_id": user_id, **achievement})
-    return "Tạo thành tích thành công"
+    result = achievement_collection.insert_one({"user_id": user_id, **achievement})
+    return {"achievement_id": str(result.inserted_id)}
 
 
 @router.get("/get_all_achievement")

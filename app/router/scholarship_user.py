@@ -80,7 +80,7 @@ async def user_delete_scholarship(request: Request, scholarship_id: str):
 async def get_all_shortlist(request: Request):
     token = request.headers.get('authorization')
     user_id = get_user_id(token)
-    projection = {"scholarship_id": True}
+    projection = {"scholarship_id": True, "status": True}
     cursor = scholarshipuser_collection.find({"user_id": user_id, "label": 1}, projection)
     scholarship_list = list(cursor)
     if scholarship_list:
@@ -89,8 +89,8 @@ async def get_all_shortlist(request: Request):
             id = scholarship["scholarship_id"]
             result = scholarship_collection.find_one({"_id": ObjectId(id)})
             result["_id"] = str(result["_id"])
-            data.append(result)
-        return {"data": data}
+            data.append({"status": scholarship["status"], "data": result})
+        return data
     else:
         return {"data": []}
     
