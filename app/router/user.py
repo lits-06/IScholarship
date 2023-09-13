@@ -55,7 +55,7 @@ async def register(data: dict):
     email = data["email"]
     existing_user = user_collection.find_one({"email": email})
     if existing_user:
-        raise HTTPException(status_code = status.HTTP_400_BAD_REQUEST, detail = "Email already exists")
+        raise HTTPException(status_code = status.HTTP_400_BAD_REQUEST, detail = "Email đã tồn tại")
     hash_password = get_password_hash(data["password"])
     new_user = {
         "email": data["email"],
@@ -78,6 +78,16 @@ async def get_user_info(request: Request):
     user_id = get_user_id(token)
     projection = {"_id": False, "password": False}
     result = user_collection.find_one({"_id": ObjectId(user_id)}, projection)
+    if "education_level" not in result:
+        user_collection.update_one({"email": result["email"]}, {"$set": {"education_level": None}})
+    if "nationality" not in result:
+        user_collection.update_one({"email": result["email"]}, {"$set": {"nationality": None}})
+    if "sex" not in result:
+        user_collection.update_one({"email": result["email"]}, {"$set": {"sex": None}})
+    if "date_of_birth" not in result:
+        user_collection.update_one({"email": result["email"]}, {"$set": {"date_of_birth": None}})
+    if "phone" not in result:
+        user_collection.update_one({"email": result["email"]}, {"$set": {"phone": None}})
     return result
 
 
@@ -94,4 +104,9 @@ async def update_user_info(request: Request, data: dict):
     else:
         raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi cập nhật thông tin")
     
+
+# @router.post("/logout")
+# async def logout(request: Request):
+#     token = request.headers.get('authorization')
+        
     

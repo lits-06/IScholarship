@@ -6,6 +6,7 @@ from pydantic import ValidationError
 
 from fastapi.security import OAuth2PasswordBearer
 from app.core.config import settings
+from app.db.mongo import db
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl = "/api/token")
@@ -26,6 +27,10 @@ def get_user_id(token: str):
     if not user_id:
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Không tìm thấy user")
     return user_id
+
+
+# def set_token_expire(token: str):
+    
 
 
 
