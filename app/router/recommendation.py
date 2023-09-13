@@ -22,3 +22,8 @@ async def get_all_model():
     scholarshipuser = [scholarshipuser_doc | {"_id": str(scholarshipuser_doc["_id"])} for scholarshipuser_doc in cursor_scholarshipuser]
     
     return {"user": user, "scholarship": scholarship, "scholarshipuser": scholarshipuser}
+
+
+# @router.post("/recommendation")
+# async def recommendation(user_id: str):
+#     code something...
