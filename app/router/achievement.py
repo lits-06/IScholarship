@@ -20,9 +20,12 @@ async def create_achievement(request: Request, achievement: dict = Body(...)):
 async def get_all_achievement(request: Request):
     token = request.headers.get('authorization')
     user_id = get_user_id(token)
-    projection = {"_id": False, "title": True, "role": True, "description": True}
+    projection = {"_id": True, "title": True, "role": True, "description": True}
     cursor = achievement_collection.find({"user_id": user_id}, projection)
-    achievement_list = list(cursor)
+    achievement_list = []
+    for achievement in cursor:
+        achievement["_id"] = str(achievement["_id"])
+        achievement_list.append(achievement)
     return {"data": achievement_list}
     
 
