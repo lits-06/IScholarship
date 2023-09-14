@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.router import user, scholarship, scholarship_user, achievement, recommendation
+from router import user, scholarship, scholarship_user, achievement, recommendation
 
 api_router = APIRouter()
 
