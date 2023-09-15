@@ -1,8 +1,10 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Request
 from math import ceil
 from bson import ObjectId
+import re
 
 from db.mongo import db
+from router.deps import get_user_id
 
 
 router = APIRouter()
@@ -24,6 +26,20 @@ async def get_all_model():
     return {"user": user, "scholarship": scholarship, "scholarshipuser": scholarshipuser}
 
 
-# @router.post("/recommendation")
-# async def recommendation(user_id: str):
+@router.post("/get_recommendation")
+async def get_recommendation(data: dict):
+    query = {}
+    if "type" in data:
+        query["type"] = data["type"]
+    if "education_level" in data:
+        regex_pattern = re.compile(fr".*{data['education_level']}.*")
+        query["education_level"] = {"$regex": regex_pattern}
+        cursor = scholarship_collection.find(query).skip(0).limit(10)
+        result = [record | {"_id": str(record["_id"])} for record in cursor]
+        return result
+    
+
+# @router.post("/auto_recommendation")
+# async def auto_recommendation(user_id: str)
+#     code sth here...
     
