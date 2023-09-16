@@ -34,9 +34,12 @@ async def get_recommendation(data: dict):
     if "education_level" in data:
         regex_pattern = re.compile(fr".*{data['education_level']}.*")
         query["education_level"] = {"$regex": regex_pattern}
-        cursor = scholarship_collection.find(query).skip(0).limit(10)
-        result = [record | {"_id": str(record["_id"])} for record in cursor]
-        return result
+    if "major" in data:
+        regex_pattern = re.compile(fr".*{data['major']}.*")
+        query["major"] = {"$regex": regex_pattern}
+    cursor = scholarship_collection.find(query).skip(0).limit(10)
+    result = [record | {"_id": str(record["_id"])} for record in cursor]
+    return result
     
 
 # @router.post("/auto_recommendation")
