@@ -1,0 +1,2 @@
+Hãy giúp tôi phân loại học bổng này thành một trong ba loại học bổng : học bổng hỗ trợ khó khăn, học bổng doanh nghiệp/tổ chức, học bổng đại học/du học. Trả lời theo định dạng "Loại học bổng : {loại học bổng}"
+Hãy lấy cho tôi thông tin về giá trị của học bổng này và trả lời theo định dạng "Giá trị học bổng : {thông tin}" (Nếu thông tin bằng tiếng Anh hãy dịch chúng ra Tiếng Việt) (Viết câu trả lời trên một dòng duy nhất)

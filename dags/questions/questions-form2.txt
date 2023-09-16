@@ -1,0 +1,3 @@
+Hãy tìm cho tôi tên đầy đủ của học bổng này và tên học bổng phải chứa từ "học bổng" hoặc "scholarship", sau đó trả lời theo định dạng : "Tên : {Tên}"
+Hãy lấy cho tôi tên đầy đủ của một hoặc nhiều tổ chức hợp tác, phối hợp tạo ra học bổng này theo định dạng : "Tổ chức : {Tên tổ chức 1, tên tổ chức 2,...}"
+Tìm deadline ứng tuyển hoặc thời gian nộp hồ sơ và dịch thành định dạng "dd/mm/yyyy", có dịch tên tháng ra số, ví dụ như "October" to "10" or "Oct" to "10". Sau đó trả lời theo định dạng : "Thời gian: DD/MM/YYYY, ", hoặc "Thời gian: DD/MM, " hoặc "Thời gian: MM/YY, " tùy theo việc có thông tin về ngày,tháng,năm hay không .  

@@ -1,0 +1,3 @@
+Hãy phân loại cấp bậc của học bổng này thành các loại sau đây : "trung cấp, cao đẳng, đại học, thạc sĩ, tiến sĩ".(lưu ý nếu là "sau đại học" thì đáp án là "tiến sĩ, thạc sĩ"). Sau đó trả lời theo định dạng : "cấp học: trung cấp, cao đẳng,...”
+Tìm thông tin về ngành, lĩnh vực liên quan đến học bổng và phân loại vào các nhóm ngành sau đây : "Kiến trúc và xây dựng","Kinh doanh và thương mại","Công nghệ thông tin","Luật - nhân văn","Báo chí - Khoa học xã hội","Y tế","Khoa học cơ bản","Sư phạm". Sau đó trả lời theo định dạng: "nhóm ngành: Y tế, khoa học cơ bản,..." 
+Lấy ra Link ứng tuyển học bổng này và trả lời theo định dạng "Link: {url}"

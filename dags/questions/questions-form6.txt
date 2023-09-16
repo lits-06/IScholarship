@@ -1,0 +1,2 @@
+(Nếu thông tin bằng tiếng Anh hãy dịch chúng ra Tiếng Việt)
+Lấy ra thông tin điều kiện được xét học bổng này và trả lời theo định dạng "Điều kiện: {thông tin}"

@@ -1,0 +1,2 @@
+1. Lấy ra đầy đủ thông tin về điều kiện được xét học bổng này và trả lời theo định dạng "Điều kiện: {thông tin}" (viết thành một câu trả lời duy nhất)
+2. Phân loại địa điểm học bổng hoặc vị trí của trường đại học. Bắt buộc phân loại vào các vị trí: "Châu Á","Châu Âu","Mỹ". Sau đó với trường đại học có vị trí ở Việt Nam phân loại vào các vị trí: "miền Bắc Việt Nam", "miền Nam Việt Nam" ,"miền Trung Việt Nam".Sau đó trả lời theo định dạng: "vị trí: miền Bắc Việt Nam, miền Nam Việt Nam, ..."
