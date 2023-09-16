@@ -57,6 +57,18 @@ async def get_scholarship_info(scholarship_id: str):
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Không tìm thấy học bổng")
     
 
+@router.put("/update_scholarship_info")
+async def update_scholarship_info(scholarship_id: str, data: dict):
+    result = scholarship_collection.update_one(
+        {"_id": ObjectId(scholarship_id)},
+        {"$set": {**data}}
+    )
+    if result.modified_count > 0: 
+        return "Cập nhật thành công"
+    else:
+        raise HTTPException(status_code = status.HTTP_500_INTERNAL_SERVER_ERROR, detail = "Lỗi khi cập nhật thông tin")
+    
+
 @router.get("/get_all_scholarship")
 async def get_all_scholarship():
     cursor = scholarship_collection.find()
