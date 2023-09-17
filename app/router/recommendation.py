@@ -49,7 +49,7 @@ async def get_recommendation(data: dict):
     
 
 @router.get("/train_model")
-async def get_all_data(method: str):
+async def get_all_data():
     # if method == "BM25":
     cursor_scholarship = scholarship_collection.find()
     scholarship = [scholarship_doc | {"_id": str(scholarship_doc["_id"])} for scholarship_doc in cursor_scholarship]
@@ -70,8 +70,10 @@ async def get_all_data(method: str):
 
 
 @router.get("/recommend")
-async def recommendation(user_id: str, type_model: str, model:str, method: str, k: int):
+async def recommendation(request: Request, type_model: str, model:str, method: str, k: int):
     #if method == 'BM25':
+    token = request.headers.get('authorization')
+    user_id = get_user_id(token)
     achievements = achievement_collection.find({"user_id": user_id})
     achievements_list = []
     for achievement in achievements:

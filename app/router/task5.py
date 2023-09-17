@@ -1,7 +1,7 @@
 from typing import Optional
 import os
 
-from fastapi import FastAPI,APIRouter 
+from fastapi import FastAPI, APIRouter 
 from bs4 import BeautifulSoup
 import requests
 
@@ -10,7 +10,7 @@ def extract_soup(url: str):
     # getting the text from url
     headers = {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0"}
     # avoid 
-    r =requests.get(url, verify=False)
+    r = requests.get(url, verify=False)
     html = r.text
     soup = BeautifulSoup(html, "html.parser")
     for element in soup(
