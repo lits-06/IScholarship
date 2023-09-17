@@ -39,7 +39,8 @@ async def get_scholarship(page: int):
     total_scholarship = scholarship_collection.count_documents({})
     total_page = ceil(total_scholarship / 10)
     skip_count = (page - 1) * 10
-    cursor = scholarship_collection.find().skip(skip_count).limit(10)
+    projection = {"raw_text": False, "html_file": False}
+    cursor = scholarship_collection.find({}, projection).sort("created_at", -1).skip(skip_count).limit(10)
     scholarship = [scholarship_doc | {"_id": str(scholarship_doc["_id"])} for scholarship_doc in cursor]
     if scholarship:
         return {"total_page": total_page, "scholarship": scholarship}

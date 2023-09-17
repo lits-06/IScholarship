@@ -5,12 +5,18 @@ import re
 
 from db.mongo import db
 from router.deps import get_user_id
+# from ..middlewares.recommend import turn_json_to_df, cast_to_atomic_file, load_dataset, train_model, get_top_k_item, get_top_k_item_context
+from middlewares.bm25 import create_string_list, get_top_k_item_bm25
+# from recbole.quick_start import load_data_and_model
+import os
 
 
 router = APIRouter()
 user_collection = db["user"]
 scholarship_collection = db["scholarship"]
 scholarshipuser_collection = db["scholarshipuser"]
+achievement_collection = db["achievement"]
+
 
 @router.get("/get_all_model")
 async def get_all_model():
@@ -42,7 +48,45 @@ async def get_recommendation(data: dict):
     return result
     
 
-# @router.post("/auto_recommendation")
-# async def auto_recommendation(user_id: str)
-#     code sth here...
-    
+@router.get("/train_model")
+async def get_all_data(method: str):
+    # if method == "BM25":
+    cursor_scholarship = scholarship_collection.find()
+    scholarship = [scholarship_doc | {"_id": str(scholarship_doc["_id"])} for scholarship_doc in cursor_scholarship]
+    create_string_list(scholarship)
+    return {"status": 200}
+    # else:
+    #     cursor_user = user_collection.find()
+    #     user = [user_doc | {"_id": str(user_doc["_id"])} for user_doc in cursor_user]
+
+    #     cursor_scholarship = scholarship_collection.find()
+    #     scholarship = [scholarship_doc | {"_id": str(scholarship_doc["_id"])} for scholarship_doc in cursor_scholarship]
+
+    #     cursor_scholarshipuser = scholarshipuser_collection.find()
+    #     scholarshipuser = [scholarshipuser_doc | {"_id": str(scholarshipuser_doc["_id"])} for scholarshipuser_doc in cursor_scholarshipuser]
+        
+    #     train_model(scholarshipuser, user, scholarship, "general", "BPR")
+    #     return {"status": 200}
+
+
+@router.get("/recommend")
+async def recommendation(user_id: str, type_model: str, model:str, method: str, k: int):
+    #if method == 'BM25':
+    achievements = achievement_collection.find({"user_id": user_id})
+    achievements_list = []
+    for achievement in achievements:
+        achievement.pop("_id", None)  # Loại bỏ ObjectId
+        achievements_list.append(achievement)
+    directory = os.path.dirname('app/middlewares/bm25/')
+    file_path = os.path.join(directory, 'scholarship.txt')
+    list_recommend = get_top_k_item_bm25(achievements_list, file_path, k)
+    return {"recommend": list_recommend}
+    # else:
+    #     config, model_train, data_set, train_data, valid_data, test_data = load_data_and_model(
+    #         model_file=f'saved/{model}.pth',
+    #     )
+    #     if type_model == "general":
+    #         topk_score, topk_iid_list = get_top_k_item([user_id], data_set, model_train, test_data, config, 1)
+    #     else:
+    #         topk_score, topk_iid_list = get_top_k_item_context([user_id], data_set, model_train, test_data, config, 1)
+    #     return topk_score, topk_iid_list 

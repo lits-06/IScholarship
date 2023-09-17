@@ -41,16 +41,16 @@ with DAG(
         """
         response = requests.get(url, verify=False)
         feed = feedparser.parse(response.text)
-            if feed.bozo == 1:
-                print("some error")
-            for entry in feed.entries:
-                if not rss_collection.find_one({"title": entry.title}) and not rss_collection.find_one({"link": entry.link}) and "học bổng" in entry.title.lower():
-                    new_post = {
-                        "title": entry.title,
-                        "link": entry.link,
-                        "published": datetime.strptime(entry.published, "%a, %d %b %Y %H:%M:%S %z"),
-                    }
-                    rss_collection.insert_one(new_post)
+        if feed.bozo == 1:
+            print("some error")
+        for entry in feed.entries:
+            if not rss_collection.find_one({"title": entry.title}) and not rss_collection.find_one({"link": entry.link}) and "học bổng" in entry.title.lower():
+                new_post = {
+                    "title": entry.title,
+                    "link": entry.link,
+                    "published": datetime.strptime(entry.published, "%a, %d %b %Y %H:%M:%S %z"),
+                }
+                rss_collection.insert_one(new_post)
 
 
     url = get_source_urls()
