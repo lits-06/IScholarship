@@ -199,7 +199,7 @@ class ExtractURL():
 #print(extract)
 
 
-router= FastAPI()
+router= APIRouter()
 @router.get("/scholarship/{full_path:path}")
 def extract_and_upload_todb(full_path:str):
     mydict = ExtractURL.extract_info(full_path)
