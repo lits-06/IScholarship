@@ -11,3 +11,4 @@ build
 # project
 experiments/
 logs/
+dags/questions/openai.txt

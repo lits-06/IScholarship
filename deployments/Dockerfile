@@ -5,5 +5,7 @@ USER airflow
 RUN python -m pip install --upgrade pip
 RUN pip install feedparser \
     pymongo \
+    openai \
+    beautifulsoup4 \
     --no-cache-dir
 

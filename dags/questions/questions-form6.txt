@@ -1,2 +1,5 @@
-(Nếu thông tin bằng tiếng Anh hãy dịch chúng ra Tiếng Việt)
-Lấy ra thông tin điều kiện được xét học bổng này và trả lời theo định dạng "Điều kiện: {thông tin}"
+1.Tên đầy đủ của học bổng này và tên học bổng phải chứa từ "học bổng" hoặc "scholarship", sau đó trả lời theo định dạng : "Tên : {Tên}"
+2.Tên đầy đủ của một hoặc nhiều tổ chức hợp tác tạo ra học bổng này theo định dạng : "Tổ chức : {Tên tổ chức 1, tên tổ chức 2,...}"
+3.Tìm Deadline nộp hồ sơ hoặc Deadline ứng tuyển và dịch thành định dạng "dd/mm/yyyy", có dịch tên tháng ra số, ví dụ như "October" to "10" or "Oct" to "10". Sau đó trả lời theo địn
+4.Phân loại học bổng này thành một trong ba loại học bổng : học bổng hỗ trợ khó khăn, học bổng doanh nghiệp/tổ chức, học bổng đại học/du học. Trả lời theo định dạng "Loại học bổng : {loại học bổng}"
+5.Tìm thông tin về giá trị của học bổng này (Viết câu trả lời trên một dòng duy nhất) và trả lời theo định dạng "B: {thông tin}" (Nếu thông tin bằng tiếng Anh hãy dịch chúng ra Tiếng Việt) 

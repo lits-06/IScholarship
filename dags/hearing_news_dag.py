@@ -17,10 +17,10 @@ with DAG(
     tags=["crawl_data"],
 ) as dag:
     
-    uri = os.getenv("MONGO_URL")
+    uri = "mongodb+srv://admin:admin123@cluster0.ymqhm3k.mongodb.net/?retryWrites=true&w=majority"
     client = MongoClient(uri, server_api=ServerApi('1'))
     db = client["db"]
-    rss_collection = db["rss_links"]
+   
     @task
     def get_source_urls():
         """
@@ -28,9 +28,11 @@ with DAG(
         Get rss feed urls from mongodb
         Output: return all urls 
         """
+        print(uri)
         links = []
-        for document in rss_collection.find({}, {"_id", 0}):
-            links.append(document["link"])
+        rss_collection = db["scholarship_links"]
+        for document in list(rss_collection.find({}, {"status": "New"})):
+            links.append({"title":document["title"], "link":document["link"]})
         return links
 
     @task 
@@ -41,16 +43,18 @@ with DAG(
         """
         response = requests.get(url, verify=False)
         feed = feedparser.parse(response.text)
+        collection = db["scholarship_links"]
         if feed.bozo == 1:
             print("some error")
         for entry in feed.entries:
-            if not rss_collection.find_one({"title": entry.title}) and not rss_collection.find_one({"link": entry.link}) and "học bổng" in entry.title.lower():
+            if not collection.find_one({"title": entry.title}) and not collection.find_one({"link": entry.link}) and "học bổng" in entry.title.lower():
                 new_post = {
                     "title": entry.title,
                     "link": entry.link,
                     "published": datetime.strptime(entry.published, "%a, %d %b %Y %H:%M:%S %z"),
+                    "status": "New"
                 }
-                rss_collection.insert_one(new_post)
+                collection.insert_one(new_post)
 
 
     url = get_source_urls()
